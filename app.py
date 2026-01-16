@@ -1,49 +1,43 @@
-import requests
-from flask import Flask, render_template
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
-app = Flask(__name__)
+app = FastAPI()
 
-ACCESS_TOKEN = "YOUR_INSTAGRAM_ACCESS_TOKEN"
-INSTAGRAM_USER_ID = "loeghaven"
+# Serve static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-def get_instagram_photos():
-    url = f"https://graph.instagram.com/{INSTAGRAM_USER_ID}/media"
-    params = {
-        "fields": "id,media_type,media_url,permalink",
-        "access_token": ACCESS_TOKEN,
-        "limit": 9
-    }
+# Templates
+templates = Jinja2Templates(directory="templates")
 
-    response = requests.get(url, params=params)
-    print(f"Response {response.status_code}")
-    data = response.json()
 
-    photos = []
-    for item in data.get("data", []):
-        if item["media_type"] == "IMAGE":
-            photos.append({
-                "url": item["media_url"],
-                "link": item["permalink"]
-            })
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse(
+        "index.html",
+        {
+            "request": request,
+            "title": "LogHaven"
+        }
+    )
 
-    return photos
 
-@app.route("/")
-def home():
-    photos = get_instagram_photos()
-    return render_template("index.html", title="My Text Site", photos=photos)
-
-@app.route("/changelog")
-def changelog():
+@app.get("/changelog", response_class=HTMLResponse)
+async def changelog(request: Request):
     changes = [
         {
             "version": "1.0",
-            "date": "2026-01-16",
+            "date": "16-01-2026",
             "items": ["Version 1.0!\n\nVelkommen til :-)"]
         }
     ]
 
-    return render_template("changelog.html", title="Changelog", changes=changes)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    return templates.TemplateResponse(
+        "changelog.html",
+        {
+            "request": request,
+            "title": "Changelog",
+            "changes": changes
+        }
+    )
