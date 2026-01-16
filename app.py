@@ -39,7 +39,7 @@ def changelog():
         {
             "version": "1.0",
             "date": "2026-01-16",
-            "items": ["Version 1.0"]
+            "items": ["Version 1.0!\n\nVelkommen til :-)"]
         }
     ]
 

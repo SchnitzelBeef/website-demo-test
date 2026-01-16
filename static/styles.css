@@ -11,6 +11,13 @@ body {
     color: #222;
 }
 
+@font-face {
+    font-family: "MyFont";
+    src: url("/static/fonts/Raleway-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 header {
     border-bottom: 1px solid #ccc;
     margin-bottom: 20px;

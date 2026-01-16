@@ -5,20 +5,22 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body style="
     background-image: url('{{ url_for('static', filename='background.jpg') }}');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: fixed;
+    font-family: 'MyFont', system-ui, sans-serif;
 ">
 
 <header>
     <h1>LØGHAVEN</h1>
     <nav>
         <a href="/">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <!-- <a href="#">About</a>
+        <a href="#">Contact</a> -->
         <a href="/changelog">Changelog</a>
         |
         <a href="https://www.instagram.com/loeghaven/" target="_blank">Instagram</a>
@@ -32,7 +34,7 @@
 </main>
 
 <footer>
-    <p>© 2026 My Site</p>
+    <p>© 2026 Løghaven - </p>
 </footer>
 
 </body>
