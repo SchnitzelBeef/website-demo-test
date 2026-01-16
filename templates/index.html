@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>2B + 3B (Løghaven)</h2>
+<p>
+I højre tårn på 2. og 3. etage finder du køkken 2B og 3B, der bedre er kendt som ’Løghaven’.
+Du vil næppe være i tvivl om, hvor du kan finde os, for her på Løghaven viser vi nemlig stolt vores unikke våbenskjold frem.
+På vores køkken er der altid højt humør, masser af socialt samvær og gode venner!
+Vi nyder kollegielivet, og alt hvad det indebærer, i fulde drag - både sociale arrangementer på tværs af køkkenener på hele kollegiet, Landmand søger kærlighed en søndag aften og ikke mindst vores gode fester på køkkenet (Løghavens vennefester vil du ikke gå glip af!).
+Vi udfolder vores gastronomiske evner til madklub tre gange om ugen og er aktive i kollegiets mange udvalg.
+På Løghaven er der altså både masser af gang i den og altid plads til hygge *glad smiley*.
+</p>
+
+<p>
+
+</p>
+
+<h2>Latest Instagram Photos</h2>
+
+<div class="gallery">
+    {% for photo in photos %}
+        <a href="{{ photo.link }}" target="_blank">
+            <img src="{{ photo.url }}" alt="Instagram Photo">
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

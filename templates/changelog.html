@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Changelog</h2>
+<p>Track updates and improvements to this website.</p>
+
+<div class="changelog">
+    {% for entry in changes %}
+        <div class="change-entry">
+            <h3>Version {{ entry.version }}</h3>
+            <small>{{ entry.date }}</small>
+
+            <ul>
+                {% for item in entry["items"] %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

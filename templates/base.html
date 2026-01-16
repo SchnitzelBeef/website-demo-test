@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="
+    background-image: url('{{ url_for('static', filename='background.jpg') }}');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+">
+
+<header>
+    <h1>LØGHAVEN</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="/changelog">Changelog</a>
+        |
+        <a href="https://www.instagram.com/loeghaven/" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/groups/319058558117245" target="_blank">Facebook</a>
+        <a href="https://www.ikol.dk/" target="_blank">IKOL</a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>© 2026 My Site</p>
+</footer>
+
+</body>
+</html>
